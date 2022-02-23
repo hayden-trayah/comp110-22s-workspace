@@ -19,5 +19,5 @@ def test_sum_many_items() -> None:
     assert sum(xs) == 6.0
 
 
-def test_sum_many_utems_agian() -> None:
+def test_sum_many_items_agian() -> None:
     assert sum([-1.0, 1.0, -2.0, 2.0]) == 0.0
