@@ -1,6 +1,6 @@
 """Dictionary related utility functions."""
 
-__author__ = ""
+__author__ = "730325581"
 
 from csv import DictReader
 
@@ -45,4 +45,49 @@ def columnar(row_table: list[dict[str, str]]) -> dict[str, list[str]]:
 
     return result
 
+
+def head(table: dict[str, list[str]], N: int) -> dict[str, list[str]]:
+    """Produce the first N rows of a table."""
+    result: dict[str, list[str]] = {}
+    if N >= len(table):
+        return table
+    for header in table:
+        result[header] = []
+    i: int = 0
+    while i < N:
+        for header in table:
+            result[header].append(table[header][i])
+        i += 1
+    return result
+
+
+def select(table: dict[str, list[str]], colmuns: list[str]) -> dict[str, list[str]]:
+    """Produce a new table only with the given columns."""
+    result: dict[str, list[str]] = {}
+    for header in colmuns:
+        result[header] = table[header]
+    return result
     
+
+def concat(table: dict[str, list[str]], table2: dict[str, list[str]]) -> dict[str, list[str]]:
+    """Combine the columns of two tables."""
+    result: dict[str, list[str]] = {}
+    for header in table:
+        result[header] = table[header]
+    for header in table2:
+        if header not in result.keys(): 
+            result[header] = table2[header]
+        else:
+            result[header] += table2[header]
+    return result
+
+
+def count(input_list: list[str]) -> dict[str, int]:
+    """Outputs a dictionary with keys that are input list values and values indicating their frequency."""
+    result: dict[str, int] = {}
+    for item in input_list:
+        if item not in result:
+            result[item] = 1
+        else:
+            result[item] += 1
+    return result

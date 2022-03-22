@@ -38,6 +38,7 @@ def columnar(row_table: list[dict[str, str]]) -> dict[str, list[str]]:
     result: dict[str, list[str]] = {}
 
     first_row: dict[str, str] = row_table[0]
+    print(first_row)
     for column in first_row:
         result[column] = column_values(row_table, column)
 
